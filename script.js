@@ -6,13 +6,13 @@
  var lowerCase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 
 //global variables
-var leghtChoice = "";
-var useSpecialChar = true;
-var useNumberChar = true;
-var useUpperChar = true;
-var useLowerChar = true;
-var leghtMin = 8;
-var leghtMAx = 128
+var userChoices = {
+  lengthChoice: 0,
+  useSpecialChar: false,
+  useNumberChar: false,
+  useUpperChar: false,
+  useLowerChar: false
+}
 
 //function to get the password options selected by the user
   //error handling for amount of characters in password
@@ -21,27 +21,25 @@ var leghtMAx = 128
   //object to store all the user choices
   //return object
 function userSelected () {
-  var leghtChoice = window.prompt("How many characters would you like your password to contain?");
-    if ((leghtChoice < leghtMAx && leghtChoice < leghtMin) == "false") {
+  userChoices['lengthChoice'] = window.prompt("How many characters would you like your password to contain?");
+    if (userChoices['lengthChoice'] < 7 && userChoices['lengthChoice'] > 129) {
       window.alert("Password must be 8 characters minimun and 128 maximun");
-    }; 
-    if (window.confirm("Would you like to include special characters in your password?")) {
-      useSpecialChar == true 
-    };
-    if (window.confirm("Would you like to include numbers in your password?")) {
-      useNumberChar == true 
-    }; 
-    if (window.confirm("Would you like to include uppercases in your password?")) {
-      useUpperChar == true 
-    }; 
-    if (window.confirm("Would you like to include lowercases in your password?")) {
-      useLowerChar == true 
-    };
-    console.log(useSpecialChar + useNumberChar + useUpperChar + useLowerChar);
-}
+    } else {
+        console.log(userChoices);
+        userChoices['useSpecialChar'] = window.confirm("Would you like to include special characters in your password?");
+        console.log(userChoices);
+        userChoices['useNumberChar'] = window.confirm("Would you like to include numbers in your password?");
+        console.log(userChoices);
+        userChoices['useUpperChar'] = window.confirm("Would you like to include uppercases in your password?");
+        console.log(userChoices);
+        userChoices['useLowerChar'] = window.confirm("Would you like to include uppercases in your password?");
+        console.log(userChoices);
+      };
+} //I'm missing the array to colect user's picks
 
 //need an array to randomly select elements from user's options
 function randomSelected(randomizeArr) {
+  var userChoices = array[Math.floor(math.random() * array.lengthChoice)]
   //use math.floor to select random choice within the choice array
   //choose random characters in the array
   //return the random element
@@ -56,9 +54,8 @@ function generatePassword() {
   
   //conditional statement are needed to add if the user has chosen special characters into an array of pissble characters and must push new random characters to chosen array
   if (condition) {
-
   }
-  //iterate over the password leght from the choice made (obj), selecting random indexes from the array of possible characters and puts them into a result variable
+  //iterate over the password lenght from the choice made (obj), selecting random indexes from the array of possible characters and puts them into a result variable
   for (let index = 0; index < Array.length; index++) {
     const element = array[index];
   }
